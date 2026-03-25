@@ -1,0 +1,5 @@
+🔹 Seed Feature
+
+The seed feature is used to control the randomness in data generation and ensure reproducibility of the generated datasets. In the system, a random number generator is initialized using a seed value provided as an input parameter. By using the same seed value across multiple runs, the system produces identical datasets, which is extremely useful for testing, debugging, and validation purposes. This ensures consistency in results and allows developers to replicate specific scenarios when needed.
+
+For example, if the seed value is set to a fixed number such as 123, the generated customer data will remain the same across multiple executions. However, changing the seed value will result in a completely different dataset. This feature provides flexibility by allowing both deterministic and varied data generation. In real-world applications, reproducibility is a critical requirement, especially when validating data pipelines or comparing outputs across different runs. Therefore, the seed feature plays an important role in maintaining consistency and reliability in the system.
