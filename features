@@ -1,0 +1,39 @@
+g9100001
+s7&5q6C
+
+
+🔹 Data Generation Feature
+
+The data generation feature forms the core of the application, where synthetic customer data is created to simulate real-world datasets used in financial systems. The system generates records containing attributes such as KYC ID, customer name, customer type, country code, risk rating, account status, transaction count, and total transaction value. A deterministic approach is used by initializing a random generator with a seed value, ensuring that the same input parameters always produce the same output. This helps in reproducibility and testing. The data is generated in a loop based on the selected dataset size, which can vary from small to large volumes. This feature enables developers to simulate large-scale datasets without relying on actual production data, thereby improving testing efficiency and maintaining data privacy.
+
+🔹 Snapshot-Based Data Feature
+
+The snapshot-based data feature allows the system to generate datasets corresponding to specific points in time using a snapshot date parameter. Each dataset is associated with a particular date, enabling the simulation of how customer data evolves over time. For example, a dataset generated for January may differ from a dataset generated for February, reflecting changes in customer behavior or account status. This concept is essential in real-world systems where data is captured periodically and used for auditing, compliance, and analytics. By generating multiple snapshots and comparing them, the system demonstrates the concept of temporality, which is a key aspect of data engineering and lifecycle management.
+
+🔹 Scenario-Based Data Generation Feature
+
+The scenario-based feature enables controlled simulation of different real-world situations. Three main scenarios are implemented: normal, missing IDs, and changed attributes. In the normal scenario, data is generated without any modifications, serving as a baseline dataset. In the missing IDs scenario, certain records are skipped during generation, simulating cases where customers are removed or missing from the system. This is useful for testing data reconciliation processes. In the changed attributes scenario, specific fields such as risk rating and account status are modified for a subset of records, representing changes in customer behavior or system updates. This feature provides predictable and repeatable outputs, making it highly useful for demonstrations and testing.
+
+🔹 Delta Feature
+
+The delta feature introduces randomness into the dataset by modifying approximately 30% of the records during generation. Unlike scenario-based changes, which are controlled, delta changes are applied randomly using a probabilistic condition. This feature simulates real-world environments where data changes occur unpredictably due to various factors such as customer activity, transactions, or system updates. The delta mode is particularly useful for stress testing and validating systems that need to handle dynamic and evolving data. By combining deterministic generation with random mutations, the system achieves a balance between reproducibility and realism.
+
+🔹 Schema Versioning Feature
+
+Schema versioning is implemented to track the structure of the generated data. Each dataset is tagged with a schema version, which is included as a column in the CSV files and also recorded in the audit file. This feature is important in real-world systems where data structures evolve over time due to changing business requirements. By maintaining schema versions, the system ensures backward compatibility and allows different versions of data to coexist. This helps downstream systems adapt to structural changes without breaking existing functionality. Schema versioning also improves traceability and supports data governance practices.
+
+🔹 CSV File Generation Feature
+
+The system generates output data in CSV format, which is widely used for data exchange and analysis. Two main files are created: fenergo.csv and gears.csv. The fenergo file contains customer-related information, while the gears file contains account and transaction details. The CSV writer utility handles file creation, writes headers, and populates rows with generated data. The files are stored in a designated output directory, which is mounted using Docker volumes for easy access. This feature ensures that the generated data can be easily consumed by other systems or tools such as Excel, databases, or analytics platforms.
+
+🔹 Audit Logging Feature
+
+An audit file in JSON format is generated to capture metadata about each run of the application. This file includes details such as dataset size, number of records generated, seed value, snapshot date, delta mode status, and schema version. The audit file plays a crucial role in ensuring traceability and accountability. It allows developers and analysts to understand how a dataset was generated and reproduce it if needed. This feature is particularly important in regulated environments where data lineage and auditability are critical requirements.
+
+🔹 Docker Integration Feature
+
+The application is containerized using Docker to ensure consistent execution across different environments. Docker allows the application to run in an isolated environment with all dependencies packaged together. Docker Compose is used to manage the container lifecycle and simplify execution using environment variables. Volume mapping is used to store output files on the host system, enabling easy access to generated data. This feature enhances portability, scalability, and ease of deployment, making the system suitable for both development and production environments.
+
+🔹 Identity and Temporality Concepts
+
+The project demonstrates two important data engineering concepts: identity and temporality. Identity refers to the unique identification of each customer using a KYC ID, which remains constant across different snapshots. Temporality refers to the evolution of data over time, where customer attributes such as risk rating and account status change across snapshots. By combining these concepts, the system effectively models real-world data behavior, where entities remain the same but their attributes evolve over time. This understanding is crucial for building robust data pipelines and analytics systems.
