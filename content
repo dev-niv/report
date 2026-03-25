@@ -1,0 +1,50 @@
+The project developed during the internship focuses on building a 
+configurable data generation system to simulate real-world customer 
+datasets used in KYC (Know Your Customer) and CLM (Client Lifecycle Management) systems. 
+  The system is designed to generate synthetic data that closely mimics real production data, 
+  allowing developers and analysts to test data pipelines, validate transformations, and 
+  demonstrate data behavior across time. The application begins by accepting various input
+parameters such as dataset size, random seed, snapshot date, delta mode, scenario type, and
+  schema version. These parameters allow the system to be highly flexible and reusable for 
+multiple testing scenarios. Based on the size parameter, the system determines the number of 
+records to generate, ensuring scalability from small datasets to large volumes.
+
+The core logic of the application is implemented using a loop that iterates over
+the number of records and generates customer data such as KYC ID, customer name, risk rating,
+  account status, transaction count, and total value. A deterministic random generator is used 
+with a seed value to ensure reproducibility of data across runs. The system supports multiple 
+scenarios to simulate different real-world conditions. In the normal scenario, data is generated
+without any modifications. In the missing IDs scenario, certain records are skipped to simulate 
+customers disappearing from the system, which can represent account closures or data inconsistencies. 
+  In the changed attributes scenario, selected customer attributes such as risk rating and account 
+status are modified to simulate real-world changes in customer behavior.
+
+In addition to scenario-based changes, the system also supports a delta mode, which introduces random
+modifications to approximately 30% of the records. This feature is designed to mimic real-world 
+  unpredictability in data, where changes occur without a predefined pattern. While scenarios 
+provide controlled and predictable changes for demonstration purposes, delta mode provides a 
+more realistic simulation of production data environments. Another important feature implemented 
+is schema versioning, which ensures that each generated dataset is tagged with a schema version.
+  This allows tracking of structural changes in data over time and supports backward compatibility
+in evolving systems.
+
+The generated data is written into CSV files, specifically fenergo.csv and gears.csv, which represent
+different aspects of customer and account information. Additionally, an audit file in JSON format is
+generated to capture metadata about the run, including dataset size, seed value, snapshot date, delta
+  mode status, and schema version. This audit file ensures traceability and helps in debugging and 
+validation of data generation processes. The entire application is containerized using Docker, enabling 
+consistent execution across environments. Docker Compose is used to manage the container lifecycle
+and simplify execution using environment variables.
+
+One of the key concepts demonstrated by this project is identity and temporality. Identity refers
+to the uniqueness of each customer, represented by the KYC ID, which remains constant across snapshots.
+  Temporality refers to how customer data changes over time, which is captured using different snapshot dates.
+  By generating datasets for multiple snapshots and comparing them, the system effectively demonstrates 
+how data evolves in real-world systems. Overall, this project provides a strong foundation for understanding 
+data engineering concepts such as data generation, transformation, versioning, and lifecycle management. It can be further extended to support real-time data streaming, database integration, and advanced analytics use cases.
+
+✍️ 3️⃣ Extra lines (if you need more pages)
+
+You can add this paragraph also 👇
+
+This project also helped in understanding practical challenges such as handling file permissions in Docker environments, managing environment variables, and debugging containerized applications. During the implementation, issues related to file access permissions were encountered when generating output files inside Docker containers. These issues were resolved by properly configuring user permissions and volume mappings. The project also emphasized the importance of modular code design, where different layers such as service, model, and utility were separated to ensure maintainability and scalability. Logging was incorporated to track execution flow and assist in debugging. The use of Docker ensured that the application could be easily deployed and executed across different systems without dependency issues. Overall, the project enhanced understanding of backend development, data simulation techniques, and container-based deployment strategies.
