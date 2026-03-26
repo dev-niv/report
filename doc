@@ -1,0 +1,9 @@
+🟢 2️⃣ Input Parameters
+✍️ Add this:
+
+The application is designed to be configurable through environment variables, which control the behavior of data generation. Key input parameters include SIZE, which determines the number of records to be generated; SEED, which ensures reproducibility of the dataset; SNAPSHOT_DATE, which represents the point in time for which data is generated; SCENARIO, which defines the type of data modification to be applied; DELTA, which enables random changes in the dataset; and SCHEMA_VERSION, which tracks the version of the data structure. These parameters provide flexibility and allow the system to simulate different real-world conditions.
+
+🟢 3️⃣ Output Description
+✍️ Add this:
+
+The system generates output in the form of structured files that can be easily used for analysis and testing. The fenergo.csv file contains customer-related information such as KYC ID, customer name, type, country, and risk rating. The gears.csv file includes account and transaction details such as status, transaction count, and total value. In addition to these files, the system also generates a run_audit.json file, which stores metadata about the execution, including input parameters, number of records generated, and configuration details. These outputs provide both data and traceability for the generated datasets.
