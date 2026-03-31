@@ -1,0 +1,11 @@
+📊 Features Implemented Table (for PPT)
+Feature	Description
+Data Generation	Generates synthetic customer and transaction data
+Snapshot Support	Creates datasets for specific dates to track changes over time
+Scenario Feature	Supports normal, missing_ids, and changed_attributes cases
+Delta Mode	Applies random changes (~30%) to simulate real-world updates
+Seed Control	Ensures reproducible data generation using fixed seed values
+Schema Versioning	Tracks data structure version in output files
+CSV Output	Generates structured output files (fenergo.csv, gears.csv)
+Audit Logging	Creates JSON file with execution metadata
+Docker Integration	Runs application in container for consistent execution
